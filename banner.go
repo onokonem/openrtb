@@ -24,7 +24,7 @@ type Banner struct {
 	Ext      Extensions `json:"ext,omitempty"`
 
 	// Block lists fast check bit mask
-	BattrBits *CreativeAttributes `json:"-"` // Blocked creative attributes bitmask, no marshal
+	BattrBits *CreativeAttribute `json:"-"` // Blocked creative attributes bitmask, no marshal
 
 }
 
