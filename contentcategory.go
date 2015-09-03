@@ -15,14 +15,6 @@ func NewContentCategory(x int64) *ContentCategory {
 	return &ContentCategory{*big.NewInt(x)}
 }
 
-func GetContentCategory(p string) *ContentCategory {
-	cat := ContentCategories[p]
-	if cat != nil {
-		return cat
-	}
-	return NewContentCategory(0)
-}
-
 func AssembleContentCategory(p ...string) *ContentCategory {
     c := NewContentCategory(0)
 	for _, v := range(p) {
