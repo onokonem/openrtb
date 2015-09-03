@@ -23,7 +23,7 @@ func GetContentCategory(p string) *ContentCategory {
 	return NewContentCategory(0)
 }
 
-func AssempleContentCategory(p ...string) *ContentCategory {
+func AssembleContentCategory(p ...string) *ContentCategory {
     c := NewContentCategory(0)
 	for _, v := range(p) {
 	    cat := ContentCategories[v]
