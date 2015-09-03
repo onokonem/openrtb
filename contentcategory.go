@@ -7,11 +7,12 @@ import (
 var bigInt_0 = big.NewInt(0)
 var bigInt_1 = big.NewInt(1)
 
-type ContentCategory big.Int
+type ContentCategory struct {
+	big.Int
+}
 
 func NewContentCategory(x int64) *ContentCategory {
-    cat := ContentCategory(*big.NewInt(x))
-	return &cat
+	return &ContentCategory{big.Int(x)}
 }
 
 func GetContentCategory(p string) *ContentCategory {
@@ -23,7 +24,7 @@ func GetContentCategory(p string) *ContentCategory {
 }
 
 func AssempleContentCategory(p ...string) *ContentCategory {
-    c := big.NewInt(0)
+    c := NewContentCategory(0)
 	for _, v := range(p) {
 	    cat := ContentCategories[v]
 	    if cat != nil {
@@ -34,7 +35,7 @@ func AssempleContentCategory(p ...string) *ContentCategory {
 }
 
 func (c *ContentCategory) Check(cat *ContentCategory) bool {
-	return (big.NewInt(0).And(c, cat).Cmp(bigInt_0) != 0)
+	return (NewContentCategory(0).And(c, cat).Cmp(bigInt_0) != 0)
 }
 
 var ContentCategories = map[string]*ContentCategory {
