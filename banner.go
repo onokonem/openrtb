@@ -22,6 +22,10 @@ type Banner struct {
 	Expdir   []int      `json:"expdir,omitempty"`   // Specify properties for an expandable ad
 	Api      []int      `json:"api,omitempty"`      // List of supported API frameworks
 	Ext      Extensions `json:"ext,omitempty"`
+
+	// Block lists fast check bit mask
+	BattrBits *CreativeAttributes `json:"-"` // Blocked creative attributes bitmask, no marshal
+
 }
 
 // Returns topframe status, with default fallback
@@ -50,5 +54,8 @@ func (b *Banner) WithDefaults() *Banner {
 		b.Pos = new(int)
 		*b.Pos = AD_POS_UNKNOWN
 	}
+
+	b.BattrBits = AssembleCreativeAttribute(b.Battr...)
+
 	return b
 }

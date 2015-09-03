@@ -26,7 +26,7 @@ type Request struct {
 	Regs    *Regulations `json:"regs,omitempty"`
 	Ext     Extensions   `json:"ext,omitempty"`
 
-	// Bit masks for block lists for fast check
+	// Block lists fast check bit mask
 	BcatBits *ContentCategory `json:"-"` // Blocked Advertiser Categories bitmask, no marshal
 
 	Pmp *Pmp `json:"pmp,omitempty"` // DEPRECATED: kept for backwards compatibility
