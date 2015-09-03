@@ -28,14 +28,14 @@ func AssempleContentCategory(p ...string) *ContentCategory {
 	for _, v := range(p) {
 	    cat := ContentCategories[v]
 	    if cat != nil {
-		    c.And(c, cat)
+		    c.And(&c.Int, &cat.Int)
 	    }
 	}
 	return c
 }
 
 func (c *ContentCategory) Check(cat *ContentCategory) bool {
-	return (NewContentCategory(0).And(*(c.Int), cat).Cmp(bigInt_0) != 0)
+	return (NewContentCategory(0).And(&c.Int, cat).Cmp(bigInt_0) != 0)
 }
 
 var ContentCategories = map[string]*ContentCategory {
