@@ -26,6 +26,9 @@ type Request struct {
 	Regs    *Regulations `json:"regs,omitempty"`
 	Ext     Extensions   `json:"ext,omitempty"`
 
+	// Bit masks for block lists for fast check
+	BcatBits ContentCategory `json:"-"` // Blocked Advertiser Categories bitmask, no marshal
+
 	Pmp *Pmp `json:"pmp,omitempty"` // DEPRECATED: kept for backwards compatibility
 }
 
@@ -93,6 +96,8 @@ func (req *Request) WithDefaults() *Request {
 	for i, imp := range req.Imp {
 		req.Imp[i] = *(&imp).WithDefaults()
 	}
+
+	req.BcatBits = AssembleContentCategory(req.Bcat)
 
 	return req
 }
