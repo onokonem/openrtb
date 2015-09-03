@@ -19,7 +19,7 @@ func NewContentCategory(p string) *ContentCategory {
 
 func AssempleContentCategory(p ...string) *ContentCategory {
     c := big.NewInt(0)
-	for _, v := range(p...) {
+	for _, v := range(p) {
 	    cat := ContentCategories[v]
 	    if cat != nil {
 		    c.And(c, cat)
