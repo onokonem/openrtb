@@ -35,7 +35,7 @@ func AssempleContentCategory(p ...string) *ContentCategory {
 }
 
 func (c *ContentCategory) Check(cat *ContentCategory) bool {
-	return (NewContentCategory(0).And(c, cat).Cmp(bigInt_0) != 0)
+	return (NewContentCategory(0).And(*(c.Int), cat).Cmp(bigInt_0) != 0)
 }
 
 var ContentCategories = map[string]*ContentCategory {
